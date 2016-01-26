@@ -1,0 +1,95 @@
+
+  <script type="text/javascript" src="jquery-1.11.0.min.js"></script><script>
+	$(document).ready(function() {
+
+    function getChildren($row) {
+        var children = [], level = $row.attr('data-level');
+        while($row.next().attr('data-level') > level) {
+             children.push($row.next());
+             $row = $row.next();
+        }            
+        return children;
+    }        
+
+    $('.parent').on('click', function() {
+    
+        var children = getChildren($(this));
+        $.each(children, function() {
+            $(this).toggle();
+        })
+    });
+    
+})
+
+</script>
+<style>
+	.parent {
+    color: green;
+}
+.child {
+    color: blue;
+}
+</style>
+<table id="mytable">
+    <tbody>
+    <tr class="parent" data-level="0">
+        <td>Cash and Equivalents</td>
+        <td>000,000</td>
+        <td>000,000</td>
+
+    </tr>
+    <tr class="parent" data-level="1">
+        <td>Cash and Equivalents</td>
+        <td>000,000</td>
+        <td>000,000</td>
+
+    </tr>
+    <tr class="child" data-level="2">
+        <td>Cash and Equivalents</td>
+        <td>000,000</td>
+        <td>000,000</td>
+
+    </tr>
+    <tr class="child" data-level="2">
+        <td>Cash and Equivalents</td>
+        <td>000,000</td>
+        <td>000,000</td>
+
+    </tr>
+    <tr class="child" data-level="2">
+        <td>Cash and Equivalents</td>
+        <td>000,000</td>
+        <td>000,000</td>
+
+    </tr>
+    <tr class="parent" data-level="1">
+        <td>Cash and Equivalents</td>
+        <td>000,000</td>
+        <td>000,000</td>
+
+    </tr>
+
+    <tr class="child" data-level="2">
+        <td>Cash and Equivalents</td>
+        <td>000,000</td>
+        <td>000,000</td>
+
+    </tr>
+    <tr class="parent" data-level="1">
+        <td>Cash and Equivalents</td>
+        <td>000,000</td>
+        <td>000,000</td>
+
+    </tr>
+    <tr class="child" data-level="2">
+        <td>Cash and Equivalents</td>
+        <td>000,000</td>
+        <td>000,000</td>
+    </tr>
+    <tr class="child" data-level="2">
+        <td>Cash and Equivalents</td>
+        <td>000,000</td>
+        <td>000,000</td>
+    </tr>
+</tbody>
+</table>
